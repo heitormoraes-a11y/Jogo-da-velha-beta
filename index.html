@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jogo da Velha Extreme</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bg-grid"></div>
+<button id="btnSound" class="sound" aria-label="Som">🔊 Som ON</button>
+
+<!-- MENU -->
+<section id="menu" class="screen active">
+  <h1 class="title"><span>JOGO DA VELHA</span><strong>EXTREME</strong></h1>
+  <p class="tagline">Escolha seu estilo. Domine o tabuleiro.</p>
+  <div class="stack">
+    <button class="btn big" data-go="setup">JOGAR</button>
+    <button class="btn" data-go="setup">CONFIGURAÇÕES</button>
+    <button class="btn" data-go="how">COMO JOGAR</button>
+    <button class="btn danger" id="menuReset">RESETAR PLACAR</button>
+  </div>
+</section>
+
+<!-- CONFIGURAÇÃO -->
+<section id="setup" class="screen">
+  <h2 class="h2">CONFIGURAR PARTIDA</h2>
+  <div class="panel">
+    <label class="lbl">Seu nome</label>
+    <input id="playerName" maxlength="12" value="Jogador">
+    <label class="lbl">Dificuldade</label>
+    <div id="diffs" class="chips"></div>
+    <p id="diffDesc" class="hint"></p>
+  </div>
+  <div class="two">
+    <div class="panel" id="pPlayer">
+      <h3>SUA PEÇA</h3>
+      <div class="preview" id="prevPlayer"></div>
+      <div class="chips shapes" data-who="player"></div>
+      <div class="chips colors" data-who="player"></div>
+    </div>
+    <div class="panel" id="pAI">
+      <h3>PEÇA DA IA</h3>
+      <div class="preview" id="prevAI"></div>
+      <div class="chips shapes" data-who="ai"></div>
+      <div class="chips colors" data-who="ai"></div>
+    </div>
+  </div>
+  <div class="row">
+    <button class="btn" data-go="menu">VOLTAR</button>
+    <button class="btn big" id="btnStart">INICIAR</button>
+  </div>
+</section>
+
+<!-- COMO JOGAR -->
+<section id="how" class="screen">
+  <h2 class="h2">COMO JOGAR</h2>
+  <div class="panel text">
+    <p>O objetivo é conseguir <b>três peças em sequência</b>.</p>
+    <p>A sequência pode ser <b>horizontal</b>, <b>vertical</b> ou <b>diagonal</b>.</p>
+    <p>Cada jogador possui uma <b>forma</b> e uma <b>cor</b> diferentes. Toque ou clique numa casa livre para jogar.</p>
+    <p>Dificuldades: do <b>Iniciante</b> (quase aleatório) ao <b>Impossível</b> (Minimax, nunca perde).</p>
+  </div>
+  <button class="btn" data-go="menu">VOLTAR</button>
+</section>
+
+<!-- JOGO -->
+<section id="game" class="screen">
+  <div class="score">
+    <div class="sc" id="scP"><small id="scPName">JOGADOR</small><b id="nP">0</b></div>
+    <div class="sc"><small>EMPATES</small><b id="nD">0</b></div>
+    <div class="sc" id="scA"><small>IA</small><b id="nA">0</b></div>
+  </div>
+  <div class="info">
+    <span id="infoDiff"></span>
+    <div id="turn" class="turn"></div>
+    <div class="legend"><i id="legP"></i><i id="legA"></i></div>
+  </div>
+  <div id="board" class="board"></div>
+  <div class="row">
+    <button class="btn" id="btnNew">NOVA PARTIDA</button>
+    <button class="btn danger" id="btnReset">RESETAR PLACAR</button>
+    <button class="btn" id="btnMenu">MENU</button>
+  </div>
+</section>
+
+<!-- RESULTADO -->
+<div id="modal" class="modal"><div class="mbox">
+  <h2 id="mTitle"></h2><p id="mSub"></p>
+  <div class="row"><button class="btn big" id="mAgain">NOVA PARTIDA</button><button class="btn" id="mMenu">MENU</button></div>
+</div></div>
+<canvas id="fx"></canvas>
+<script src="script.js"></script>
+</body>
+</html>
